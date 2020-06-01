@@ -21,3 +21,5 @@ server.exe
 conf.json
 /bridge
 /plugins
+server
+/maps
