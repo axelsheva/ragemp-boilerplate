@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-class-members */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/interface-name-prefix */
+
 declare module 'plugins/nativeui' {
   export enum BadgeStyle {
     None,
@@ -33,7 +33,7 @@ declare module 'plugins/nativeui' {
     Audio2,
     Audio3,
     AudioInactive,
-    AudioMute
+    AudioMute,
   }
 
   export enum Font {
@@ -41,7 +41,7 @@ declare module 'plugins/nativeui' {
     HouseScript = 1,
     Monospace = 2,
     CharletComprimeColonge = 4,
-    Pricedown = 7
+    Pricedown = 7,
   }
 
   export interface ILiteEvent {
@@ -80,7 +80,7 @@ declare module 'plugins/nativeui' {
 
     static Parse(point: number[]): Point;
     static Parse(point: { X: number; Y: number }): Point;
-    static Parse(arg: object | string): Point;
+    static Parse(arg: Record<string, unknown> | string): Point;
   }
 
   export class ListItem {
@@ -162,7 +162,13 @@ declare module 'plugins/nativeui' {
     public get SelectedValue();
     public set SelectedValue(value: number);
 
-    constructor(text: string, description?: string, lowerThreshold?: number, upperThreshold?: number, startValue?: number);
+    constructor(
+      text: string,
+      description?: string,
+      lowerThreshold?: number,
+      upperThreshold?: number,
+      startValue?: number,
+    );
   }
 
   export class UIMenuListItem extends UIMenuItem {
@@ -180,11 +186,23 @@ declare module 'plugins/nativeui' {
     public get Index();
     public set Index(value: number);
 
-    constructor(text: string, description?: string, collection?: ItemsCollection, startIndex?: number);
+    constructor(
+      text: string,
+      description?: string,
+      collection?: ItemsCollection,
+      startIndex?: number,
+    );
   }
 
   export class UIMenuSliderItem extends UIMenuItem {
-    constructor(text: string, items: any[], index: number, description?: string, divider?: boolean, data?: any);
+    constructor(
+      text: string,
+      items: any[],
+      index: number,
+      description?: string,
+      divider?: boolean,
+      data?: any,
+    );
   }
 
   export class Menu {
@@ -210,9 +228,16 @@ declare module 'plugins/nativeui' {
       | UIMenuListItem
       | UIMenuDynamicListItem
       | UIMenuSliderItem
-      | UIMenuCheckboxItem)[];
+      | UIMenuCheckboxItem
+    )[];
 
-    constructor(title: string, subtitle: string, offset: Point, spriteLibrary?: string, spriteName?: string);
+    constructor(
+      title: string,
+      subtitle: string,
+      offset: Point,
+      spriteLibrary?: string,
+      spriteName?: string,
+    );
 
     public SetMenuWidthOffset(item: UIMenuItem): void;
     public AddItem(item: UIMenuItem): void;
