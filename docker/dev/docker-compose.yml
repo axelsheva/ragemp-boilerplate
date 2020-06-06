@@ -1,0 +1,26 @@
+version: "3"
+services:
+    database:
+        container_name: gta-database-dev
+        image: postgres:12.2
+        env_file:
+            - .db.env
+        volumes:
+            - postgres:/var/lib/postgresql/data
+        ports:
+            - "5433:5432"
+    gta:
+        build:
+            context: ../../
+            dockerfile: dev.Dockerfile
+        container_name: gta-game-dev
+        image: gta-game-dev
+        env_file:
+            - .db.env
+        volumes:
+            - ../../:/app/service
+        ports:
+            - "22005:22005"
+            - "22006:22006"
+volumes:
+    postgres:
