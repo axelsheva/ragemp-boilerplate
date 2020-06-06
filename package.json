@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && server",
-    "watch": "nodemon --watch packages --watch client_packages --exec \"./server\"",
+    "watch": "nodemon --delay 2.5 --watch packages --watch client_packages --exec \"./server\"",
     "clean": "rimraf client_packages && rimraf packages",
     "build-server": "cd src/server && tsc",
     "build-client": "cd src/client && tsc",
     "build": "npm run clean && npm run build-server && npm run build-client",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "lint-entity": "eslint src/server/entities/**/*.ts --fix"
   },
   "husky": {
     "hooks": {
@@ -19,25 +20,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wuzi/ragemp-boilerplate.git"
+    "url": "git+https://github.com/axelsheva/ragemp-boilerplate.git"
   },
   "keywords": [
     "ragemp",
     "gta5",
     "boilerplate",
-    "mongodb"
+    "postgres"
   ],
   "author": "Wuzi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Wuzi/ragemp-boilerplate/issues"
+    "url": "https://github.com/axelsheva/ragemp-boilerplate/issues"
   },
-  "homepage": "https://github.com/Wuzi/ragemp-boilerplate#readme",
+  "homepage": "https://github.com/axelsheva/ragemp-boilerplate#readme",
   "devDependencies": {
-    "@types/bcrypt": "^3.0.0",
+    "@types/bcryptjs": "^2.4.2",
     "@types/dotenv": "^6.1.1",
     "@types/glob": "^7.1.1",
-    "@types/mongoose": "^5.5.12",
     "@types/node": "^12.7.1",
     "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master",
     "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#master",
@@ -51,10 +51,15 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "i18next": "^17.0.11",
     "log4js": "^5.0.0",
-    "mongoose": "^5.9.16"
-  }
+    "pg": "^8.2.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.25"
+  },
+  "contributors": [
+    "Oleksandr Shevchenko <axelsheva94@gmail.com> (https://github.com/axelsheva)"
+  ]
 }
